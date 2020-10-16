@@ -18,7 +18,7 @@ public class ComandoListarCuentas implements Comando {
 		
 		System.out.println("Listado de Cuentas");
 		System.out.println();
-	
+		System.out.println();
 		for (Cuenta cuenta : contexto.getCuentas()) {
 			System.out.println(cuenta.getNumero() + " : $ " + cuenta.getSaldo());
 		}

@@ -21,7 +21,7 @@ public class ComandoRetirar implements Comando {
 		
 		System.out.println("Retiro de Dinero");
 		System.out.println();
-		
+		System.out.println();
 		// la clase Console no funciona bien en Eclipse
 		Scanner console = new Scanner(System.in);			
 		
