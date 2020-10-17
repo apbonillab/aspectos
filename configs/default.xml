@@ -5,11 +5,8 @@
 	<feature automatic="selected" name="ConsultaSaldo"/>
 	<feature automatic="selected" name="Retiros"/>
 	<feature name="Consignaciones"/>
-	<feature manual="selected" name="Transferir"/>
+	<feature name="Transferir"/>
 	<feature automatic="selected" name="Operaciones"/>
 	<feature name="Auditoria"/>
 	<feature name="SaldoReducido"/>
-	<feature name="otrasTransacciones"/>
-	<feature name="Consignar"/>
-	<feature name="Transferencia"/>
 </configuration>

@@ -1,4 +1,7 @@
+import java.util.Scanner;
+
 import ejemplo.cajero.modelo.Banco;
+import ejemplo.cajero.modelo.Cuenta;
 
 public aspect Transferir {
 	pointcut callMethod(): call(* ejemplo.cajero.control.Comando.ejecutar(..));
@@ -17,7 +20,11 @@ public aspect Transferir {
 			// Ingresa los datos
 			System.out.println("Ingrese el número de cuenta origen");
 			String numeroCuentaOrigen = console.nextLine();
-			
+			Object[] args = thisJoinPoint.getArgs();
+			Banco contexto = new Banco();
+			for (Object arg : args) {
+				contexto = (Banco) arg;
+			}
 			Cuenta cuentaOrigen = contexto.buscarCuenta(numeroCuentaOrigen);
 			if (cuentaOrigen == null) {
 				throw new Exception("No existe cuenta con el número " + numeroCuentaOrigen);
@@ -25,11 +32,7 @@ public aspect Transferir {
 
 			System.out.println("Ingrese el número de cuenta destino");
 			String numeroCuentaDestino = console.nextLine();
-			Object[] args = thisJoinPoint.getArgs();
-			Banco contexto = new Banco();
-			for (Object arg : args) {
-				contexto = (Banco) arg;
-			}
+			
 			Cuenta cuentaDestino = contexto.buscarCuenta(numeroCuentaDestino);
 			if (cuentaDestino == null) {
 				throw new Exception("No existe cuenta con el número " + numeroCuentaDestino);
@@ -50,8 +53,10 @@ public aspect Transferir {
 			} catch (NumberFormatException e) {
 				throw new Exception("Valor a transferir no válido : " + valor);
 			}
-		}
-}else {
+		
+	}else {
 	proceed();
 }
 	}
+}
+
